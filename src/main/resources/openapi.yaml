@@ -1,0 +1,44 @@
+
+openapi: 3.0.3
+
+info:
+  title: SOA Addition API
+  version: 1.0.0
+  description: GET Addition Endpoint Contract
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /ms1/:
+    get:
+      summary: Add two numbers
+      operationId: addition
+      parameters:
+        - name: num1
+          in: query
+          required: true
+          schema:
+            type: integer
+
+        - name: num2
+          in: query
+          required: true
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Addition successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: integer
+                required:
+                  - result
+
+        '400':
+          description: Invalid input
